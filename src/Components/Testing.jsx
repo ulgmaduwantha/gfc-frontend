@@ -4,6 +4,8 @@ import "./Testing.css"
 export default function Testing(){
     
     const [count,setCount] = useState(0)
+
+    const [name,setName] = useState("iphones")
  
     function increment(){
         console.log("incrementing")
@@ -12,15 +14,31 @@ export default function Testing(){
 
     function decrement(){
         console.log("decrementing")
+        if(count > 0){
         setCount(count - 1)
+        }
     }
+
+    function changeName(value){
+        setName(value)
+    }
+
+
     
     return (
         
         <div className="background">
-        <button onClick={decrement}>-</button>
+            <h1>{name}</h1>
+        <button className ="value" onClick={decrement}>-</button>
         <span>{count}</span>
-        <button onClick={increment}>+</button>
+        <button className="value" onClick={increment}>+</button>
+        
+            <div className="button-panel">
+            <button onClick={()=>changeName("Iphone")}>Iphone</button>
+            <button onClick={()=>changeName("Laptop")}>Laptop</button>
+            <button onClick={()=>changeName("Charger")}>Charger</button>  
+            </div>
+
         </div>
     )
 }
