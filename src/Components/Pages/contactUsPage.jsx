@@ -74,13 +74,13 @@ export default function ContactUs() {
               href="mailto:support@ecommerce.com"
               className="text-blue-500 hover:underline"
             >
-              support@ecommerce.com
+              support@gallfacecosmetics.com
             </a>
           </p>
           <p className="text-gray-600 mt-2">
             Call us at{" "}
             <a href="tel:+123456789" className="text-blue-500 hover:underline">
-              +1 234 567 89
+              +94 71 982 9114
             </a>
           </p>
         </div>
