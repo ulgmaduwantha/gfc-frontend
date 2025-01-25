@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Routes, Route } from "react-router-dom";
 import { GoGraph } from "react-icons/go";
 import { FaBox, FaShoppingCart, FaUsers } from "react-icons/fa";
 
@@ -37,9 +37,15 @@ export default function AdminHomePage() {
                 </Link>
             </div>
 
-            {/* Main Content */}
+            
             <div className="w-[80%] h-screen bg-red-500">
-                {/* Add main content here */}
+                <Routes path="/*">
+                    <Route path="/dashboard" element={<h1 className="text-black">Dashboard</h1>} />
+                    <Route path="/products" element={<h1 className="text-black">Products</h1>} />
+                    <Route path="/orders" element={<h1>Orders</h1>} />
+                    <Route path="/customers" element={<h1>Customers</h1>} />
+                    <Route path="/*" element={<h1>404 Admin page not found</h1>}/>
+                </Routes>
             </div>
 
         </div>
