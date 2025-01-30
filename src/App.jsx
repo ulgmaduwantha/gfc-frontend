@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import SignupPage from './Components/Pages/SignupPage'
 import AdminHomePage from './Components/Pages/adminHomePage'
 import ContactUs from './Components/Pages/contactUsPage'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,6 +14,7 @@ function App() {
   return (
     <>
     <BrowserRouter>
+    <Toaster/>
     <Routes path="/*">
       <Route path='/' element={<Homepage/>} />
 
