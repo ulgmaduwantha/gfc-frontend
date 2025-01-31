@@ -39,7 +39,7 @@ export default function AdminHomePage() {
             </div>
 
             
-            <div className="w-[80%] h-screen bg-red-500">
+            <div className="w-[80%] h-screen">
                 <Routes path="/*">
                     <Route path="/dashboard" element={<h1 className="text-black">Dashboard</h1>} />
                     <Route path="/products" element={<AdminProductsPage/>} />
