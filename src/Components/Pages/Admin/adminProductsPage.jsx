@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { FaTrash } from "react-icons/fa"; // FaTrash is from react-icons/fa
-import { FaPencil } from "react-icons/fa6"; // FaPencil is from react-icons/fa6
+import { FaPlus, FaTrash, FaPen } from "react-icons/fa"; // Corrected FaPen import
+import { Link } from "react-router-dom";
 
 export default function AdminProductsPage() {
     const [products, setProducts] = useState([]);
@@ -18,8 +18,14 @@ export default function AdminProductsPage() {
     }, []);
 
     return (
-        <div className="p-8 bg-gray-100 min-h-screen">
+        <div className="p-8 bg-gray-100 min-h-screen relative">
+            {/* Add Product Button */}
+            <Link to={"/admin/products/addProducts"} className="absolute right-6 bottom-6 bg-blue-500 text-white rounded-full p-4 shadow-lg hover:bg-blue-600 transition-colors focus:outline-none">
+                <FaPlus className="w-6 h-6" />
+            </Link>
+
             <h1 className="text-3xl font-bold text-gray-800 mb-6">Admin Products Page</h1>
+            
             <div className="overflow-x-auto bg-white rounded-lg shadow-md">
                 <table className="min-w-full">
                     <thead className="bg-gray-200">
@@ -48,7 +54,7 @@ export default function AdminProductsPage() {
                                             <FaTrash className="w-5 h-5" />
                                         </button>
                                         <button className="text-blue-500 hover:text-blue-700 transition-colors">
-                                            <FaPencil className="w-5 h-5" />
+                                            <FaPen className="w-5 h-5" /> {/* Changed to FaPen */}
                                         </button>
                                     </div>
                                 </td>
