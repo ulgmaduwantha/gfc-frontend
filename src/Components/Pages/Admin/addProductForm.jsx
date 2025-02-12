@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function AddProductForm() {
 
@@ -12,6 +13,8 @@ export default function AddProductForm() {
     const [imageUrls, setImageUrls] = useState("")
     const [alternativeNames, setAlternativeNames] = useState("")
     const [stock, setStock] = useState("")
+
+    const navigate = useNavigate()
 
     async function handleSubmit(){
 
@@ -38,6 +41,7 @@ export default function AddProductForm() {
             Authorization : "Bearer "+token
           }
         })
+        navigate("/admin/products")
         toast.success("product added successfuly")
       }catch(err){
         toast.error("Failed to add product")
