@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaPlus, FaTrash, FaPen } from "react-icons/fa"; // Corrected FaPen import
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function AdminProductsPage() {
     const [products, setProducts] = useState([]);
@@ -50,7 +51,23 @@ export default function AdminProductsPage() {
                                 <td className="px-6 py-4 text-sm text-gray-900 max-w-xs">{product.description}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                     <div className="flex space-x-4">
-                                        <button className="text-red-500 hover:text-red-700 transition-colors">
+                                    <button className="text-red-500 hover:text-red-700 transition-colors" onClick={() => {
+                                            alert(product.productId);
+                                            const token = localStorage.getItem("token");
+
+                                            axios.delete(`http://localhost:3000/api/products/${product.productId}`, {
+                                                headers: {
+                                                    Authorization: `Bearer ${token}`
+                                                },
+                                            }).then((res) => {
+                                                console.log(res.data);
+                                                toast.success("Product deleted successfully!");
+                                                setProducts(products.filter(p => p.productId !== product.productId)); // Remove deleted product from state
+                                            }).catch((err) => {
+                                                console.error("Failed to delete product:", err);
+                                                toast.error("Failed to delete product.");
+                                            });
+                                        }}>
                                             <FaTrash className="w-5 h-5" />
                                         </button>
                                         <button className="text-blue-500 hover:text-blue-700 transition-colors">
